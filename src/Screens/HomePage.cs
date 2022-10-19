@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Screens
@@ -55,7 +56,11 @@ namespace Screens
         private void button1_Click(object sender, EventArgs e)
         {
             RUNNING = true;
-            Run();
+
+            Task.Factory.StartNew(() =>
+            {
+                Run();
+            });
         }
 
         private void Stop_Click(object sender, EventArgs e)
